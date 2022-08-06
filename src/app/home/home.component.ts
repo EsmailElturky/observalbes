@@ -25,27 +25,24 @@ export class HomeComponent implements OnInit , OnDestroy{
       let count=0;
       setInterval(()=>{
         observer.next(count);
-        if (count==2){
-          debugger;
-          observer.complete();
-        }
+        if (count===2){
+          observer.complete();}
         if(count>3){
-          debugger;
-          console.log('aleeeeert')
           observer.error(new Error('count is greater than 3!'));
         }
         count++
-      },1000);
+      },1000); 
     });
-    this.firstObsSubdcribtion=customObservable.subscribe(data=>{
+
+    
+    this.firstObsSubdcribtion=customObservable.subscribe(
+      data=>{
       console.log(data);},
-     
-      error=>{
-        console.log(error);
-        alert(error.message);
-      },
-      ()=>{console.log("completed")})
+      error=>{console.log(error);
+      alert(error.message)},
+      ()=>{console.log('completed');},
+      
+    );
 
-  }
-
+}
 }
